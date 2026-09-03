@@ -1,0 +1,1583 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+:root {
+
+    --bg: #090708;
+
+    --panel: #100c0e;
+
+    --text: #ddd5d7;
+
+    --muted: #918589;
+
+    --line: #33272b;
+
+    --accent: #9d2739;
+
+    --accent-soft: #c35a6b;
+
+    --white: #f4edef;
+
+}
+
+
+
+/* =====================================================
+   BASE
+===================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(126, 25, 45, .14),
+            transparent 38rem
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    overflow-x: hidden;
+}
+
+
+button,
+input {
+    font: inherit;
+}
+
+
+button {
+    color: inherit;
+}
+
+
+
+/* =====================================================
+   TEXTURA
+===================================================== */
+
+.grain {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: .035;
+
+    z-index: 20;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    width:
+        min(
+            900px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        92px 0 58px;
+
+    text-align:
+        center;
+
+}
+
+
+.eyebrow {
+
+    color:
+        var(--accent-soft);
+
+    font:
+        11px/1.4
+        "Courier New",
+        monospace;
+
+    letter-spacing:
+        .28em;
+
+    margin-bottom:
+        20px;
+
+}
+
+
+.hero h1 {
+
+    color:
+        var(--white);
+
+    font-size:
+        clamp(
+            48px,
+            13vw,
+            110px
+        );
+
+    line-height:
+        .9;
+
+    font-weight:
+        normal;
+
+    letter-spacing:
+        .12em;
+
+    text-shadow:
+        0 0 35px
+        rgba(
+            157,
+            39,
+            57,
+            .15
+        );
+
+}
+
+
+.subtitle {
+
+    max-width:
+        560px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        var(--muted);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.7;
+
+}
+
+
+.hero-line {
+
+    width:
+        100%;
+
+    height:
+        1px;
+
+    margin-top:
+        42px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--line),
+            transparent
+        );
+
+}
+
+
+.hero-line span {
+
+    display:
+        block;
+
+    width:
+        48px;
+
+    height:
+        1px;
+
+    margin:
+        auto;
+
+    background:
+        var(--accent);
+
+}
+
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+
+    width:
+        min(
+            780px,
+            calc(100% - 28px)
+        );
+
+    margin:
+        0 auto;
+
+}
+
+
+
+/* =====================================================
+   ACCORDION
+===================================================== */
+
+.accordion {
+
+    border-top:
+        1px solid var(--line);
+
+}
+
+
+.accordion:last-of-type {
+
+    border-bottom:
+        1px solid var(--line);
+
+}
+
+
+.accordion-header {
+
+    width:
+        100%;
+
+    border:
+        0;
+
+    background:
+        transparent;
+
+    padding:
+        24px 8px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    cursor:
+        pointer;
+
+    text-align:
+        left;
+
+    font-size:
+        17px;
+
+    transition:
+        color .25s ease;
+
+}
+
+
+.accordion-header:hover {
+
+    color:
+        var(--accent-soft);
+
+}
+
+
+.accordion-header b {
+
+    color:
+        var(--accent-soft);
+
+    font:
+        11px
+        "Courier New",
+        monospace;
+
+    letter-spacing:
+        .12em;
+
+    margin-right:
+        17px;
+
+}
+
+
+.chevron {
+
+    color:
+        var(--muted);
+
+    font:
+        22px
+        "Courier New",
+        monospace;
+
+    transition:
+        transform .35s ease,
+        color .35s ease;
+
+}
+
+
+.accordion-header[aria-expanded="true"]
+.chevron {
+
+    transform:
+        rotate(180deg);
+
+    color:
+        var(--accent-soft);
+
+}
+
+
+
+/* =====================================================
+   EXPANSÃO
+===================================================== */
+
+.accordion-content {
+
+    display:
+        grid;
+
+    grid-template-rows:
+        0fr;
+
+    opacity:
+        0;
+
+    transition:
+        grid-template-rows .45s ease,
+        opacity .3s ease;
+
+}
+
+
+.accordion-content > .content-inner {
+
+    overflow:
+        hidden;
+
+    min-height:
+        0;
+
+}
+
+
+.accordion-content.open {
+
+    grid-template-rows:
+        1fr;
+
+    opacity:
+        1;
+
+}
+
+
+.content-inner {
+
+    padding:
+        0 8px 28px;
+
+    color:
+        #bdb3b6;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.85;
+
+}
+
+
+.content-inner p + p {
+
+    margin-top:
+        14px;
+
+}
+
+
+.hint {
+
+    margin-top:
+        18px;
+
+    color:
+        #756a6e;
+
+    font:
+        11px/1.6
+        "Courier New",
+        monospace;
+
+}
+
+
+code {
+
+    color:
+        var(--accent-soft);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+}
+
+
+
+/* =====================================================
+   PLAYER
+===================================================== */
+
+.player {
+
+    padding:
+        25px;
+
+    border:
+        1px solid var(--line);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.025),
+            rgba(0,0,0,.12)
+        );
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.2);
+
+}
+
+
+.player-top {
+
+    display:
+        flex;
+
+    gap:
+        22px;
+
+    align-items:
+        center;
+
+}
+
+
+.cover-wrap {
+
+    position:
+        relative;
+
+    flex:
+        0 0 118px;
+
+    width:
+        118px;
+
+    height:
+        118px;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid #3d2d32;
+
+    background:
+        #0b090a;
+
+}
+
+
+.cover-wrap img {
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+}
+
+
+.playing-mark {
+
+    position:
+        absolute;
+
+    right:
+        8px;
+
+    bottom:
+        8px;
+
+    display:
+        flex;
+
+    align-items:
+        end;
+
+    gap:
+        2px;
+
+    height:
+        16px;
+
+    opacity:
+        0;
+
+}
+
+
+.player.is-playing
+.playing-mark {
+
+    opacity:
+        1;
+
+}
+
+
+.playing-mark i {
+
+    display:
+        block;
+
+    width:
+        2px;
+
+    height:
+        7px;
+
+    background:
+        var(--accent-soft);
+
+    animation:
+        equalize .7s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+.playing-mark i:nth-child(2) {
+
+    animation-delay:
+        -.4s;
+
+    height:
+        13px;
+
+}
+
+
+.playing-mark i:nth-child(3) {
+
+    animation-delay:
+        -.2s;
+
+    height:
+        9px;
+
+}
+
+
+.playing-mark i:nth-child(4) {
+
+    animation-delay:
+        -.6s;
+
+    height:
+        15px;
+
+}
+
+
+@keyframes equalize {
+
+    to {
+
+        transform:
+            scaleY(.35);
+
+    }
+
+}
+
+
+
+/* =====================================================
+   INFORMAÇÕES
+===================================================== */
+
+.track-info {
+
+    min-width:
+        0;
+
+}
+
+
+.mini-label {
+
+    color:
+        var(--accent-soft);
+
+    font:
+        10px
+        "Courier New",
+        monospace;
+
+    letter-spacing:
+        .18em;
+
+}
+
+
+.track-info h2 {
+
+    margin-top:
+        9px;
+
+    color:
+        var(--white);
+
+    font-size:
+        23px;
+
+    font-weight:
+        normal;
+
+    overflow-wrap:
+        anywhere;
+
+}
+
+
+.track-info p {
+
+    margin-top:
+        6px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        14px;
+
+}
+
+
+
+/* =====================================================
+   VISUALIZADOR
+===================================================== */
+
+.visualizer {
+
+    height:
+        40px;
+
+    margin:
+        22px 0 4px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        4px;
+
+    opacity:
+        .45;
+
+}
+
+
+.visualizer span {
+
+    width:
+        2px;
+
+    height:
+        5px;
+
+    background:
+        var(--accent-soft);
+
+    transform-origin:
+        center;
+
+}
+
+
+.player.is-playing
+.visualizer span {
+
+    animation:
+        bars .75s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+.visualizer span:nth-child(2n) {
+
+    animation-delay:
+        -.2s;
+
+}
+
+
+.visualizer span:nth-child(3n) {
+
+    animation-delay:
+        -.45s;
+
+}
+
+
+.visualizer span:nth-child(5n) {
+
+    animation-delay:
+        -.1s;
+
+}
+
+
+@keyframes bars {
+
+    from {
+        height: 4px;
+    }
+
+    to {
+        height: 30px;
+    }
+
+}
+
+
+
+/* =====================================================
+   PROGRESSO
+===================================================== */
+
+.progress-area {
+
+    margin-top:
+        5px;
+
+}
+
+
+input[type="range"] {
+
+    width:
+        100%;
+
+    accent-color:
+        var(--accent);
+
+    cursor:
+        pointer;
+
+}
+
+
+.time-row,
+.volume-row {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    color:
+        #756a6e;
+
+    font:
+        10px
+        "Courier New",
+        monospace;
+
+}
+
+
+.time-row {
+
+    margin-top:
+        7px;
+
+}
+
+
+
+/* =====================================================
+   CONTROLES
+===================================================== */
+
+.controls {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        25px;
+
+    margin:
+        20px 0;
+
+}
+
+
+.control,
+.play-button {
+
+    border:
+        0;
+
+    background:
+        transparent;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform .2s ease,
+        color .2s ease;
+
+}
+
+
+.control {
+
+    color:
+        var(--muted);
+
+    font-size:
+        23px;
+
+}
+
+
+.control:hover,
+.play-button:hover {
+
+    color:
+        var(--accent-soft);
+
+    transform:
+        scale(1.1);
+
+}
+
+
+.play-button {
+
+    width:
+        55px;
+
+    height:
+        55px;
+
+    border:
+        1px solid #553039;
+
+    border-radius:
+        50%;
+
+    background:
+        #180e11;
+
+    color:
+        var(--white);
+
+    font-size:
+        17px;
+
+    padding-left:
+        3px;
+
+}
+
+
+
+/* =====================================================
+   VOLUME
+===================================================== */
+
+.volume-row {
+
+    gap:
+        12px;
+
+    align-items:
+        center;
+
+}
+
+
+.volume-row input {
+
+    flex:
+        1;
+
+}
+
+
+
+/* =====================================================
+   PLAYLIST
+===================================================== */
+
+.playlist {
+
+    margin-top:
+        22px;
+
+    border-top:
+        1px solid var(--line);
+
+}
+
+
+.track {
+
+    width:
+        100%;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        34px 1fr auto;
+
+    gap:
+        12px;
+
+    align-items:
+        center;
+
+    border:
+        0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            51,
+            39,
+            43,
+            .65
+        );
+
+    background:
+        transparent;
+
+    padding:
+        13px 5px;
+
+    text-align:
+        left;
+
+    cursor:
+        pointer;
+
+    transition:
+        background .2s ease,
+        padding .2s ease;
+
+}
+
+
+.track:hover {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .025
+        );
+
+    padding-left:
+        9px;
+
+}
+
+
+.track.active {
+
+    color:
+        var(--accent-soft);
+
+}
+
+
+.track-number {
+
+    color:
+        #655a5e;
+
+    font:
+        10px
+        "Courier New",
+        monospace;
+
+}
+
+
+.track-name {
+
+    font-size:
+        14px;
+
+}
+
+
+.track-artist {
+
+    color:
+        #6e6367;
+
+    font:
+        10px
+        "Courier New",
+        monospace;
+
+}
+
+
+
+/* =====================================================
+   GALERIA
+===================================================== */
+
+.gallery {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap:
+        10px;
+
+}
+
+
+.gallery-item {
+
+    position:
+        relative;
+
+    min-height:
+        190px;
+
+    border:
+        1px solid var(--line);
+
+    background:
+        #0e0a0c;
+
+    cursor:
+        pointer;
+
+    overflow:
+        hidden;
+
+}
+
+
+.gallery-item > span {
+
+    position:
+        absolute;
+
+    z-index:
+        2;
+
+    top:
+        9px;
+
+    left:
+        10px;
+
+    color:
+        #c1b5b9;
+
+    font:
+        10px
+        "Courier New",
+        monospace;
+
+}
+
+
+.image-placeholder {
+
+    height:
+        100%;
+
+    display:
+        grid;
+
+    place-content:
+        center;
+
+    color:
+        #564b4f;
+
+    font:
+        11px/1.7
+        "Courier New",
+        monospace;
+
+    letter-spacing:
+        .18em;
+
+    transition:
+        transform .4s ease,
+        color .4s ease;
+
+}
+
+
+.gallery-item:hover
+.image-placeholder {
+
+    transform:
+        scale(1.05);
+
+    color:
+        var(--accent-soft);
+
+}
+
+
+
+/* =====================================================
+   CARTA
+===================================================== */
+
+.letter blockquote {
+
+    margin:
+        28px 0;
+
+    padding-left:
+        20px;
+
+    border-left:
+        1px solid
+        var(--accent);
+
+    color:
+        #e1d7da;
+
+    font-size:
+        18px;
+
+    font-style:
+        italic;
+
+}
+
+
+.signature {
+
+    color:
+        var(--accent-soft);
+
+    text-align:
+        right;
+
+    font-style:
+        italic;
+
+}
+
+
+
+/* =====================================================
+   SEGREDO
+===================================================== */
+
+.secret-box {
+
+    margin:
+        40px 0 70px;
+
+    text-align:
+        center;
+
+}
+
+
+#secretBtn {
+
+    border:
+        0;
+
+    background:
+        transparent;
+
+    color:
+        #695d62;
+
+    font:
+        11px
+        "Courier New",
+        monospace;
+
+    cursor:
+        pointer;
+
+    transition:
+        color .25s ease;
+
+}
+
+
+#secretBtn:hover {
+
+    color:
+        var(--accent-soft);
+
+}
+
+
+.secret-message {
+
+    max-height:
+        0;
+
+    overflow:
+        hidden;
+
+    opacity:
+        0;
+
+    transition:
+        max-height .5s ease,
+        opacity .5s ease,
+        padding .5s ease;
+
+}
+
+
+.secret-message.open {
+
+    max-height:
+        150px;
+
+    padding-top:
+        20px;
+
+    opacity:
+        1;
+
+}
+
+
+.secret-message p {
+
+    color:
+        var(--white);
+
+    font-size:
+        18px;
+
+}
+
+
+.secret-message span {
+
+    display:
+        block;
+
+    margin-top:
+        8px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+}
+
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    width:
+        min(
+            780px,
+            calc(100% - 28px)
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        0 8px 35px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    color:
+        #4e4548;
+
+    font:
+        9px
+        "Courier New",
+        monospace;
+
+    letter-spacing:
+        .1em;
+
+}
+
+
+
+/* =====================================================
+   LIGHTBOX
+===================================================== */
+
+.lightbox {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        50;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    padding:
+        25px;
+
+    background:
+        rgba(
+            4,
+            2,
+            3,
+            .94
+        );
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+
+}
+
+
+.lightbox.open {
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+}
+
+
+.lightbox img {
+
+    max-width:
+        min(
+            900px,
+            95vw
+        );
+
+    max-height:
+        88vh;
+
+    object-fit:
+        contain;
+
+    border:
+        1px solid var(--line);
+
+}
+
+
+#closeLightbox {
+
+    position:
+        absolute;
+
+    top:
+        18px;
+
+    right:
+        25px;
+
+    border:
+        0;
+
+    background:
+        transparent;
+
+    color:
+        var(--white);
+
+    font-size:
+        36px;
+
+    cursor:
+        pointer;
+
+}
+
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 560px) {
+
+    .hero {
+        padding-top:
+            65px;
+    }
+
+
+    .player {
+        padding:
+            17px;
+    }
+
+
+    .player-top {
+        gap:
+            14px;
+    }
+
+
+    .cover-wrap {
+
+        flex-basis:
+            86px;
+
+        width:
+            86px;
+
+        height:
+            86px;
+
+    }
+
+
+    .track-info h2 {
+        font-size:
+            19px;
+    }
+
+
+    .gallery {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .gallery-item {
+
+        min-height:
+            145px;
+
+    }
+
+}
