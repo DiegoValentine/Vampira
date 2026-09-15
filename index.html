@@ -1,8 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -15,26 +15,41 @@
         content="#090708"
     >
 
-    <title>MYRABE — um pequeno lugar para você</title>
+    <meta
+        name="description"
+        content="MYRABE — um pequeno arquivo feito para uma pessoa específica."
+    >
+
+    <title>MYRABE — arquivo pessoal</title>
 
     <link
         rel="stylesheet"
-        href="style.css"
+        href="myrabe.css"
     >
+
 </head>
+
 
 <body>
 
-    <div class="grain"></div>
+    <div
+        class="grain"
+        aria-hidden="true"
+    ></div>
+
 
     <!-- =====================================================
-         CABEÇALHO
+         HERO
     ====================================================== -->
 
     <header class="hero">
 
+        <div class="archive-code">
+            MYRABE // 001
+        </div>
+
         <div class="eyebrow">
-            ARQUIVO // MYRABE
+            ARQUIVO PESSOAL
         </div>
 
         <h1>
@@ -42,15 +57,28 @@
         </h1>
 
         <p class="subtitle">
-            um pequeno lugar feito com carinho
+            um pequeno lugar feito à mão
             para uma pessoa específica.
         </p>
+
+        <div class="hero-meta">
+
+            <span>
+                STATUS: ABERTO
+            </span>
+
+            <span>
+                ACESSO: VOCÊ
+            </span>
+
+        </div>
 
         <div class="hero-line">
             <span></span>
         </div>
 
     </header>
+
 
 
     <!-- =====================================================
@@ -72,8 +100,13 @@
             >
 
                 <span>
+
                     <b>01</b>
-                    Sobre este lugar
+
+                    <span>
+                        Sobre este lugar
+                    </span>
+
                 </span>
 
                 <span class="chevron">
@@ -87,6 +120,10 @@
 
                 <div class="content-inner">
 
+                    <div class="section-code">
+                        FILE // ABOUT
+                    </div>
+
                     <p>
                         Algumas coisas são mais legais
                         quando a gente constrói em vez
@@ -94,16 +131,29 @@
                     </p>
 
                     <p>
-                        Então este site existe por um
-                        motivo bastante simples:
+                        Então este pequeno arquivo existe
+                        por um motivo bastante simples:
                         <em>você</em>.
                     </p>
 
                     <p>
-                        Explore sem pressa.
-                        Tem algumas coisas escondidas
-                        por aqui.
+                        Não precisa ter pressa.
+                        Pode abrir as coisas aos poucos.
                     </p>
+
+                    <div class="note">
+
+                        <span>
+                            NOTA
+                        </span>
+
+                        <p>
+                            Algumas partes deste lugar
+                            foram feitas para serem
+                            encontradas.
+                        </p>
+
+                    </div>
 
                 </div>
 
@@ -125,8 +175,13 @@
             >
 
                 <span>
+
                     <b>02</b>
-                    Música
+
+                    <span>
+                        Música
+                    </span>
+
                 </span>
 
                 <span class="chevron">
@@ -140,15 +195,34 @@
 
                 <div class="content-inner">
 
+                    <div class="section-code">
+                        FILE // AUDIO
+                    </div>
+
 
                     <div
                         class="player"
                         id="player"
                     >
 
+                        <div class="player-header">
+
+                            <span>
+                                MYRABE RADIO
+                            </span>
+
+                            <span
+                                id="playerStatus"
+                                class="player-status"
+                            >
+                                STANDBY
+                            </span>
+
+                        </div>
+
 
                         <!-- ==============================
-                             INFORMAÇÕES DA MÚSICA
+                             INFORMAÇÕES
                         =============================== -->
 
                         <div class="player-top">
@@ -158,11 +232,14 @@
 
                                 <img
                                     id="cover"
-                                    src="img/capa-placeholder.svg"
+                                    src="capa.jpg"
                                     alt="Capa da música"
                                 >
 
-                                <div class="playing-mark">
+                                <div
+                                    class="playing-mark"
+                                    aria-hidden="true"
+                                >
 
                                     <i></i>
                                     <i></i>
@@ -180,12 +257,19 @@
                                     NOW PLAYING
                                 </span>
 
+                                <span
+                                    id="trackNumber"
+                                    class="track-number-label"
+                                >
+                                    TRACK 01
+                                </span>
+
                                 <h2 id="trackTitle">
-                                    Adicione uma música
+                                    Carregando...
                                 </h2>
 
                                 <p id="trackArtist">
-                                    Sua playlist começa aqui
+                                    —
                                 </p>
 
                             </div>
@@ -200,7 +284,6 @@
 
                         <div
                             class="visualizer"
-                            id="visualizer"
                             aria-hidden="true"
                         >
 
@@ -214,7 +297,6 @@
                             <span></span>
                             <span></span>
                             <span></span>
-
                             <span></span>
                             <span></span>
                             <span></span>
@@ -268,9 +350,20 @@
                         <div class="controls">
 
                             <button
+                                id="shuffleBtn"
+                                class="control small-control"
+                                aria-label="Ativar reprodução aleatória"
+                                title="Aleatório"
+                            >
+                                ⤨
+                            </button>
+
+
+                            <button
                                 id="prevBtn"
                                 class="control"
                                 aria-label="Música anterior"
+                                title="Anterior"
                             >
                                 ↶
                             </button>
@@ -280,6 +373,7 @@
                                 id="playBtn"
                                 class="play-button"
                                 aria-label="Reproduzir"
+                                title="Reproduzir"
                             >
                                 ▶
                             </button>
@@ -289,8 +383,19 @@
                                 id="nextBtn"
                                 class="control"
                                 aria-label="Próxima música"
+                                title="Próxima"
                             >
                                 ↷
+                            </button>
+
+
+                            <button
+                                id="repeatBtn"
+                                class="control small-control"
+                                aria-label="Repetir música"
+                                title="Repetir"
+                            >
+                                ↻
                             </button>
 
                         </div>
@@ -303,9 +408,14 @@
 
                         <div class="volume-row">
 
-                            <span>
+                            <button
+                                id="muteBtn"
+                                class="volume-icon"
+                                aria-label="Silenciar"
+                                title="Silenciar"
+                            >
                                 VOL
-                            </span>
+                            </button>
 
                             <input
                                 id="volume"
@@ -329,14 +439,26 @@
                              PLAYLIST
                         =============================== -->
 
+                        <div class="playlist-label">
+
+                            <span>
+                                PLAYLIST
+                            </span>
+
+                            <span>
+                                <span id="trackCount">0</span>
+                                ARQUIVOS
+                            </span>
+
+                        </div>
+
+
                         <div
                             class="playlist"
                             id="playlist"
                         ></div>
 
 
-
-                        <!-- ÁUDIO REAL -->
 
                         <audio
                             id="audio"
@@ -346,16 +468,15 @@
                     </div>
 
 
-                    <p class="hint">
+                    <div class="keyboard-hint">
 
-                        Os arquivos de áudio ficam em
-                        <code>audio/</code>.
+                        <span>SPACE</span>
+                        play / pause
 
-                        Basta colocar seus MP3 ali e
-                        adicionar as músicas no
-                        <code>script.js</code>.
+                        <span>← →</span>
+                        anterior / próxima
 
-                    </p>
+                    </div>
 
                 </div>
 
@@ -377,8 +498,13 @@
             >
 
                 <span>
+
                     <b>03</b>
-                    Galeria
+
+                    <span>
+                        Álbum
+                    </span>
+
                 </span>
 
                 <span class="chevron">
@@ -392,75 +518,121 @@
 
                 <div class="content-inner">
 
-                    <div class="gallery">
+                    <div class="section-code">
+                        FILE // MEMORY
+                    </div>
 
 
-                        <button
-                            class="gallery-item"
-                            data-full="foto-1.jpg"
-                            data-alt="Foto 1"
-                        >
+                    <div class="album-intro">
 
-                            <span>
-                                01
-                            </span>
+                        <p>
+                            Algumas imagens não precisam
+                            de explicação.
+                        </p>
 
-                            <div class="image-placeholder">
-                                SUA<br>
-                                FOTO
-                            </div>
-
-                        </button>
-
-
-
-                        <button
-                            class="gallery-item"
-                            data-full="foto-2.jpg"
-                            data-alt="Foto 2"
-                        >
-
-                            <span>
-                                02
-                            </span>
-
-                            <div class="image-placeholder">
-                                SUA<br>
-                                FOTO
-                            </div>
-
-                        </button>
-
-
-
-                        <button
-                            class="gallery-item"
-                            data-full="foto-3.jpg"
-                            data-alt="Foto 3"
-                        >
-
-                            <span>
-                                03
-                            </span>
-
-                            <div class="image-placeholder">
-                                SUA<br>
-                                FOTO
-                            </div>
-
-                        </button>
+                        <span>
+                            selecione uma fotografia.
+                        </span>
 
                     </div>
 
 
-                    <p class="hint">
+                    <div class="gallery">
 
-                        Troque os arquivos dentro de
-                        <code></code> pelas imagens
-                        que quiser usar.
+
+                        <!-- FOTO 01 -->
+
+                        <button
+                            class="gallery-item"
+                            data-full="foto-1.jpg"
+                            data-alt="Fotografia 01"
+                            data-caption="01 // uma fotografia guardada aqui."
+                        >
+
+                            <span class="photo-number">
+                                01
+                            </span>
+
+                            <img
+                                src="foto-1.jpg"
+                                alt="Fotografia 01"
+                                loading="lazy"
+                            >
+
+                            <span class="photo-caption">
+                                abrir arquivo
+                            </span>
+
+                        </button>
+
+
+
+                        <!-- FOTO 02 -->
+
+                        <button
+                            class="gallery-item"
+                            data-full="foto-2.jpg"
+                            data-alt="Fotografia 02"
+                            data-caption="02 // uma segunda memória."
+                        >
+
+                            <span class="photo-number">
+                                02
+                            </span>
+
+                            <img
+                                src="foto-2.jpg"
+                                alt="Fotografia 02"
+                                loading="lazy"
+                            >
+
+                            <span class="photo-caption">
+                                abrir arquivo
+                            </span>
+
+                        </button>
+
+
+
+                        <!-- FOTO 03 -->
+
+                        <button
+                            class="gallery-item"
+                            data-full="foto-3.jpg"
+                            data-alt="Fotografia 03"
+                            data-caption="03 // talvez esta seja especial."
+                        >
+
+                            <span class="photo-number">
+                                03
+                            </span>
+
+                            <img
+                                src="foto-3.jpg"
+                                alt="Fotografia 03"
+                                loading="lazy"
+                            >
+
+                            <span class="photo-caption">
+                                abrir arquivo
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+
+                   <!--<p class="hint">
+
+                        As fotografias são carregadas pelos
+                        arquivos <code>foto-1.jpg</code>,
+                        <code>foto-2.jpg</code> e
+                        <code>foto-3.jpg</code>.
 
                     </p>
-
+                  -->
+                  
                 </div>
 
             </div>
@@ -481,8 +653,13 @@
             >
 
                 <span>
+
                     <b>04</b>
-                    Algumas palavras
+
+                    <span>
+                        Algumas palavras
+                    </span>
+
                 </span>
 
                 <span class="chevron">
@@ -496,26 +673,39 @@
 
                 <div class="content-inner letter">
 
+                    <div class="section-code">
+                        FILE // LETTER
+                    </div>
+
                     <p>
                         Eu poderia escrever alguma coisa
                         extremamente elaborada aqui.
                     </p>
 
                     <p>
-                        Mas talvez seja melhor deixar
-                        algumas coisas serem descobertas
-                        aos poucos.
+                        Poderia tentar transformar
+                        tudo em uma grande declaração.
                     </p>
 
                     <p>
-                        Então fica só uma coisa por enquanto:
+                        Mas talvez algumas coisas sejam
+                        melhores quando simplesmente
+                        são ditas.
                     </p>
 
 
                     <blockquote>
-                        você é uma pessoa que vale
-                        a pena conhecer.
+
+                        você é uma pessoa
+                        que vale a pena conhecer.
+
                     </blockquote>
+
+
+                    <p>
+                        O resto eu deixo para as palavras
+                        que realmente quero escrever.
+                    </p>
 
 
                     <p class="signature">
@@ -536,9 +726,21 @@
 
         <section class="secret-box">
 
-            <button id="secretBtn">
+            <div class="secret-line">
+                <span></span>
+            </div>
 
-                ✦ ainda tem alguma coisa aqui...
+
+            <button
+                id="secretBtn"
+                aria-expanded="false"
+            >
+
+                <span class="secret-symbol">
+                    ✦
+                </span>
+
+                ainda tem alguma coisa aqui...
 
             </button>
 
@@ -548,6 +750,10 @@
                 class="secret-message"
             >
 
+                <div class="secret-code">
+                    HIDDEN FILE // 005
+                </div>
+
                 <p>
                     Você realmente foi até o final?
                 </p>
@@ -556,61 +762,18 @@
                     Então acho que merecia encontrar isso.
                 </span>
 
+                <div class="secret-final">
+
+                    <span>
+                        acesso concedido.
+                    </span>
+
+                    <strong>
+                        obrigada por ter vindo até aqui.
+                    </strong>
+
+                </div>
+
             </div>
 
-        </section>
-
-    </main>
-
-
-
-    <!-- =====================================================
-         RODAPÉ
-    ====================================================== -->
-
-    <footer>
-
-        <span>
-            feito à mão, linha por linha.
-        </span>
-
-        <span>
-            2026
-        </span>
-
-    </footer>
-
-
-
-    <!-- =====================================================
-         LIGHTBOX
-    ====================================================== -->
-
-    <div
-        class="lightbox"
-        id="lightbox"
-        aria-hidden="true"
-    >
-
-        <button
-            id="closeLightbox"
-            aria-label="Fechar"
-        >
-            ×
-        </button>
-
-        <img
-            id="lightboxImg"
-            src=""
-            alt=""
-        >
-
-    </div>
-
-
-
-    <script src="script.js"></script>
-
-</body>
-
-</html>
+ 
